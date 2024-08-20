@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from flask_socketio import SocketIO, send
+from flask_socketio import SocketIO, send, emit
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
@@ -10,6 +10,11 @@ def handle_message(data):
     print('received message: ' + data)
     if data != "User Connected":
         send(data, broadcast=True)
+
+@socketio.on('image-upload')
+def imageUpload(image):
+    emit('send-image', image, broadcast = True)
+
 
 @app.route('/')
 def index():

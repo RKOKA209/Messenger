@@ -1,0 +1,12 @@
+[contenteditable] {
+    border: 1px solid #000;
+    line-height: 1.4em;
+    -webkit-appearance: textfield;
+    appearance: textfield
+  }
+  img {
+    vertical-align: top;
+    max-height: 1.4em;
+    max-width: 1.4em;
+  }
+  

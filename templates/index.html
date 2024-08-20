@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Messenger</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js"></script>
 </head>
@@ -22,6 +22,10 @@
                 socket.send($('#user').val() + " - " + $('#message').val());
                 $('#message').val('');
             });
+            socket.on("send-image", function(data){
+                appendImageMessage(data)
+            });
+
         });
     </script>
 
@@ -34,5 +38,11 @@
     <br>
     <input type="text" placeholder="Message" id="message">
     <button id="SendMessage">Send Message</button>
+    <br>
+    <!--<input type="file" id="img" accept="image/*"/>
+
+    <script>
+        document.getElementById('img').addEventListener('change', handleFileSelect, false);
+    </script>-->
 </body>
 </html>
